@@ -58,13 +58,14 @@
       for(var entry in update) {
         var rowSelector = `${entry}-price-feed`
         if($(`#${rowSelector}-row`).length != 0) {
-          $(`#${rowSelector}-cur-price`).text(update[entry]);
+          $(`#${rowSelector}-cur-price`).text(update[entry].cur_price);
         } else {
+          var lastUpdatedDate = new Date(update[entry].last_updated * 1000);
           var elem = $(`<tr id=\'${rowSelector}-row\'>`)
               .append($(`<td id=\'${rowSelector}-title\'>`).text(entry))
-              .append($(`<td id=\'${rowSelector}-cur-price\'>`).text(update[entry]))
-              .append($(`<td id=\'${rowSelector}-last-updated\'>`))
-              .append($(`<td id=\'${rowSelector}-prev-price\'>`))
+              .append($(`<td id=\'${rowSelector}-cur-price\'>`).text(update[entry].cur_price.toFixed(2)))
+              .append($(`<td id=\'${rowSelector}-last-updated\'>`).text(lastUpdatedDate.toUTCString()))
+              .append($(`<td id=\'${rowSelector}-prev-price\'>`).text(update[entry].prev_price.toFixed(2)))
           $(bodySelector).append(elem)
         }
       }
