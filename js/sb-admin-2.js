@@ -46,8 +46,34 @@
     e.preventDefault();
   });
 
-  $(document).ready(function(e) {
+  var ws;
 
+  $(document).ready(function(e) {
+    ws = new WebSocket('ws://54.215.119.135:5678');
+    ws.onmessage = function(e) {
+      console.log(e);
+      var update = JSON.parse(e.data);
+      var bodySelector = '#price-table-body';
+      // $("#price-feed-body").empty();
+      for(var entry in update) {
+        var rowSelector = `${entry}-price-feed`
+        if($(`#${rowSelector}-row`).length != 0) {
+          $(`#${rowSelector}-cur-price`).text(update[entry]);
+        } else {
+          var elem = $(`<tr id=\'${rowSelector}-row\'>`)
+              .append($(`<td id=\'${rowSelector}-title\'>`).text(entry))
+              .append($(`<td id=\'${rowSelector}-cur-price\'>`).text(update[entry]))
+              .append($(`<td id=\'${rowSelector}-last-updated\'>`))
+              .append($(`<td id=\'${rowSelector}-prev-price\'>`))
+          $(bodySelector).append(elem)
+        }
+      }
+        
+    };
+    ws.onopen = function(e) {
+      console.log("open");
+      console.log(e);
+    }
   });
 
 })(jQuery); // End of use strict
