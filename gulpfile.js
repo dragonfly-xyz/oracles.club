@@ -110,6 +110,7 @@ function js() {
   return gulp
     .src([
       './js/*.js',
+      './js/pages/*.js',
       '!./js/*.min.js',
     ])
     // .pipe(uglify())
