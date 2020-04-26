@@ -1,4 +1,133 @@
+// Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+// Chart.defaults.global.defaultFontColor = '#858796';
+
+function number_format(number, decimals, dec_point, thousands_sep) {
+    // *     example: number_format(1234.56, 2, ',', ' ');
+    // *     return: '1 234,56'
+    number = (number + '').replace(',', '').replace(' ', '');
+    var n = !isFinite(+number) ? 0 : +number,
+      prec = !isFinite(+decimals) ? 0 : Math.abs(decimals),
+      sep = (typeof thousands_sep === 'undefined') ? ',' : thousands_sep,
+      dec = (typeof dec_point === 'undefined') ? '.' : dec_point,
+      s = '',
+      toFixedFix = function(n, prec) {
+        var k = Math.pow(10, prec);
+        return '' + Math.round(n * k) / k;
+      };
+    // Fix for IE parseFloat(0.55).toFixed(0) = 0;
+    s = (prec ? toFixedFix(n, prec) : '' + Math.round(n)).split('.');
+    if (s[0].length > 3) {
+      s[0] = s[0].replace(/\B(?=(?:\d{3})+(?!\d))/g, sep);
+    }
+    if ((s[1] || '').length < prec) {
+      s[1] = s[1] || '';
+      s[1] += new Array(prec - s[1].length + 1).join('0');
+    }
+    return s.join(dec);
+  }
+
 var ws;
+var historicalLineChart;
+
+function renderDataOnChart(chartID, data) {
+
+    console.log("Rendering " + chartID);
+    var recentData = data.slice(0,1000);
+    var labels = recentData.map((entry) => { return entry.date});
+    var values = recentData.map((entry) => { return entry.price.toFixed(2)});
+    if(historicalLineChart) historicalLineChart.destroy();
+    var chart = $(`#${chartID}`);
+    historicalLineChart = new Chart(chart, {
+    type: 'line',
+    data: {
+        labels: labels,
+        datasets: [{
+        label: "Oracle price",
+        lineTension: 0.3,
+        backgroundColor: "rgba(78, 115, 223, 0.05)",
+        borderColor: "rgba(78, 115, 223, 1)",
+        pointRadius: 3,
+        pointBackgroundColor: "rgba(78, 115, 223, 1)",
+        pointBorderColor: "rgba(78, 115, 223, 1)",
+        pointHoverRadius: 3,
+        pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
+        pointHoverBorderColor: "rgba(78, 115, 223, 1)",
+        pointHitRadius: 10,
+        pointBorderWidth: 2,
+        data: values,
+        }],
+    },
+    options: {
+        maintainAspectRatio: false,
+        layout: {
+        padding: {
+            left: 10,
+            right: 25,
+            top: 25,
+            bottom: 0
+        }
+        },
+        scales: {
+        xAxes: [{
+            time: {
+                unit: 'date'
+            },
+            gridLines: {
+                display: false,
+                drawBorder: false
+            },
+            ticks: {
+                maxTicksLimit: 4,
+                callback: function(value, index, values) {
+                    return value.toLocaleString();
+                }
+            }
+        }],
+        yAxes: [{
+            ticks: {
+                maxTicksLimit: 5,
+                padding: 10,
+                // Include a dollar sign in the ticks
+                callback: function(value, index, values) {
+                    return '$' + number_format(value);
+                }
+            },
+            gridLines: {
+                color: "rgb(234, 236, 244)",
+                zeroLineColor: "rgb(234, 236, 244)",
+                drawBorder: false,
+                borderDash: [2],
+                zeroLineBorderDash: [2]
+            }
+        }],
+        },
+        legend: {
+        display: false
+        },
+        tooltips: {
+        backgroundColor: "rgb(255,255,255)",
+        bodyFontColor: "#858796",
+        titleMarginBottom: 10,
+        titleFontColor: '#6e707e',
+        titleFontSize: 14,
+        borderColor: '#dddfeb',
+        borderWidth: 1,
+        xPadding: 15,
+        yPadding: 15,
+        displayColors: false,
+        intersect: false,
+        mode: 'index',
+        caretPadding: 10,
+        callbacks: {
+            label: function(tooltipItem, chart) {
+            var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
+            return datasetLabel + ': $' + number_format(tooltipItem.yLabel);
+            }
+        }
+        }
+    }
+    });
+}
 
 $(document).ready(function(e) {
     ws = new WebSocket('wss://api.oracles.club:5678');
@@ -23,7 +152,6 @@ $(document).ready(function(e) {
                                     <th>Current Value</th>
                                     <th>Last Updated</th>
                                     <th>Previous Value</th>
-                                    <th>Historical Data</th>
                                 </tr>
                             </thead>
                             <tbody id='${lowerPriceFeed}-price-table-body'>
@@ -46,20 +174,47 @@ $(document).ready(function(e) {
                 if($(`#${rowSelector}-row`).length === 0) {
                     var elem = $(`<tr id=\'${rowSelector}-row\'>`)
                     .append($(`<td id=\'${rowSelector}-title\'><a href=${lowerProtocol}.html>${protocol}</a></td>`))
-                    .append($(`<td id=\'${rowSelector}-cur-price\'>`))
+                    .append($(`<td id=\'${rowSelector}-cur-price\'>`).append($(`<a href=\'#\' class='historical-data-link' id=\'${rowSelector}-cur-price-link\'>`)))
                     .append($(`<td id=\'${rowSelector}-last-updated\'>`))
                     .append($(`<td id=\'${rowSelector}-prev-price\'>`))
                     $(priceFeedTableSelector).append(elem)
                 }
 
-                $(`#${rowSelector}-cur-price`).text(priceFeedUpdate[protocol].cur_price.toFixed(2));
+                $(`#${rowSelector}-cur-price-link`).text(priceFeedUpdate[protocol].cur_price.toFixed(2));
                 $(`#${rowSelector}-last-updated`).text(lastUpdatedDate.toUTCString());
                 $(`#${rowSelector}-prev-price`).text((priceFeedUpdate[protocol].prev_price.toFixed(2)));
+
+                $(`#${rowSelector}-cur-price-link`).click({
+                    feed: priceFeed,
+                    protocol : protocol
+                }, (e) => {
+                    var protocolQueryParam = e.data.protocol.toLowerCase();
+                    var feedQueryParam;
+                    //console.log(e);
+                    switch(e.data.feed) {
+                        case 'ETHUSD' : feedQueryParam =  'ETH'; break;
+                        case 'BTCUSD' : feedQueryParam =  'BTC'; break;
+                        case 'BATUSD' : feedQueryParam =  'BAT'; break;
+                        default: return ''; break;
+                    }
+                    $('#historical-data-modal-title').text(`Historical ${e.data.feed} data for ${e.data.protocol}`);
+                    $.get(`https://api.oracles.club/${protocolQueryParam}${feedQueryParam}`, (historicalRequestData) => {
+                        historicalRequestData = JSON.parse(historicalRequestData);
+                        var cleanRequestData = historicalRequestData.map((value) => {
+                            value.date = new Date(value.timestamp * 1000);
+                            return value;
+                        })
+                        renderDataOnChart("historical-data-chart", cleanRequestData);
+                    });
+                    $('#historical-data-modal').modal();
+                })
             }
         }
     };
+
     ws.onopen = function(e) {
         console.log("open");
         //console.log(e);
     }
+
 });
