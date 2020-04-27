@@ -22,12 +22,16 @@
     <img src="img/twitter-card.png" alt="Logo" width="798" height="396">
   </a>
 
-  <h3 align="center">                         __                __      __  
+<br/>
+  <h3 align="center">
+  
+                           __                __      __  
   ____  _________ ______/ /__  _____ _____/ /_  __/ /_ 
  / __ \/ ___/ __ `/ ___/ / _ \/ ___// ___/ / / / / __ \
 / /_/ / /  / /_/ / /__/ /  __(__  )/ /__/ / /_/ / /_/ /
 \____/_/   \__,_/\___/_/\___/____(_)___/_/\__,_/_.___/ 
-                                                      </h3>
+                                                      
+</h3>
 
   <p align="center">
     the only club you need to join for ethereum oracle data
