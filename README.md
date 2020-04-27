@@ -144,16 +144,13 @@ Project Link: [https://github.com/Dragonfly-Capital/oracles.club](https://github
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=flat-square
-[contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=flat-square
-[forks-url]: https://github.com/othneildrew/Best-README-Template/network/members
-[stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=flat-square
-[stars-url]: https://github.com/othneildrew/Best-README-Template/stargazers
-[issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=flat-square
-[issues-url]: https://github.com/othneildrew/Best-README-Template/issues
-[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=flat-square
-[license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/othneildrew
-[product-screenshot]: images/screenshot.png
+[contributors-shield]: https://img.shields.io/github/contributors/Dragonfly-Capital/oracles.club.svg?style=flat-square
+[contributors-url]: https://github.com/Dragonfly-Capital/oracles.club./graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/Dragonfly-Capital/oracles.club..svg?style=flat-square
+[forks-url]: https://github.com/Dragonfly-Capital/oracles.club./network/members
+[stars-shield]: https://img.shields.io/github/stars/Dragonfly-Capital/oracles.club..svg?style=flat-square
+[stars-url]: https://github.com/Dragonfly-Capital/oracles.club./stargazers
+[issues-shield]: https://img.shields.io/github/issues/Dragonfly-Capital/oracles.club.svg?style=flat-square
+[issues-url]: https://github.com/Dragonfly-Capital/oracles.club./issues
+[license-shield]: https://img.shields.io/github/license/Dragonfly-Capital/oracles.club..svg?style=flat-square
+[license-url]: https://github.com/Dragonfly-Capital/oracles.club./blob/master/LICENSE.txt
