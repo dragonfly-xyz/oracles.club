@@ -119,7 +119,6 @@ function renderDataOnChart(chartID, data) {
         caretPadding: 10,
         callbacks: {
             label: function(tooltipItem, chart) {
-                console.log(tooltipItem);
                 var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
                 var label = datasetLabel + ': $' + tooltipItem.yLabel.toFixed(2);
                 if(data[tooltipItem.index].blocknumber) {
@@ -133,11 +132,24 @@ function renderDataOnChart(chartID, data) {
     });
 }
 
+var lastUpdatedAt;
+var lastUpdatedTimer = setInterval(() => {
+    if(lastUpdatedAt) {
+        var now = new Date();
+        var diff = ((now - lastUpdatedAt) / 1000).toFixed(0);
+        $('#last-updated-label').text(`Last updated ${diff} seconds ago`); 
+    }
+}, 1000);
+
 $(document).ready(function(e) {
     ws = new WebSocket('wss://api.oracles.club:5678');
     ws.onmessage = function(e) {
         console.log(e);
+        lastUpdatedAt = new Date();
         $('#price-feed-table-spinner').addClass('d-none');
+        //$('#last-updated-label').text('Last updated at ' + now.toTimeString())
+
+
         var update = JSON.parse(e.data);
         const priceFeedMainSelector = '#price-feed-cards'
         for(var priceFeed in update) {
@@ -195,7 +207,6 @@ $(document).ready(function(e) {
                 }, (e) => {
                     var protocolQueryParam = e.data.protocol.toLowerCase();
                     var feedQueryParam;
-                    //console.log(e);
                     switch(e.data.feed) {
                         case 'ETHUSD' : feedQueryParam =  'ETH'; break;
                         case 'BTCUSD' : feedQueryParam =  'BTC'; break;

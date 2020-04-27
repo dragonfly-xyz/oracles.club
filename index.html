@@ -153,6 +153,9 @@
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Price Feeds</h1>
+            <div class="navbar-nav ml-auto">
+              <h6 id="last-updated-label"></h6>
+            </div>
           </div>
           <div class="spinner-border" role="status" id="price-feed-table-spinner">
             <span class="sr-only">Loading...</span>
@@ -164,16 +167,6 @@
 
       </div>
       <!-- End of Main Content -->
-
-      <!-- Footer -->
-      <!-- <footer class="sticky-footer bg-white">
-        <div class="container my-auto">
-          <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2019</span>
-          </div>
-        </div>
-      </footer> -->
-      <!-- End of Footer -->
 
     </div>
     <!-- End of Content Wrapper -->
@@ -192,7 +185,27 @@
             <button aria-label="Close" data-dismiss="modal"></button>
           </div>
         </div>
+        <div class="modal-header" style="justify-content: start;">
+            <legend>Today's mood</legend>
+            <div class="field-row">
+              <input id="radio13" type="radio" name="fieldset-example2">
+              <label for="radio13">Claire Saffitz</label>
+            </div>
+            <div class="field-row">
+              <input id="radio14" type="radio" name="fieldset-example2">
+              <label for="radio14">Brad Leone</label>
+            </div>
+            <div class="field-row">
+              <input id="radio15" type="radio" name="fieldset-example2">
+              <label for="radio15">Chris Morocco</label>
+            </div>
+            <div class="field-row">
+              <input id="radio16" type="radio" name="fieldset-example2">
+              <label for="radio16">Carla Lalli Music</label>
+            </div>
+        </div>
         <div class="modal-body">
+
           <canvas id="historical-data-chart"></canvas>
         </div>
         <div class="modal-footer">
