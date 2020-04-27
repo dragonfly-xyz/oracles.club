@@ -1,34 +1,34 @@
 {
-    "title": "SB Admin 2",
-    "name": "startbootstrap-sb-admin-2",
-    "version": "4.0.7",
+    "title": "oracles.club",
+    "name": "oracles.club",
+    "version": "0.1",
     "scripts": {
         "start": "node_modules/.bin/gulp watch"
     },
-    "description": "An open source Bootstrap 4 admin theme.",
+    "description": "the only club you need to join for ethereum oracle data",
     "keywords": [
-        "css",
-        "sass",
-        "html",
-        "responsive",
-        "theme",
-        "template",
-        "admin",
-        "app"
+        "ethereum",
+        "eth",
+        "oracles",
+        "maker",
+        "coinbase",
+        "chainlink",
+        "uniswap",
+        "dfusion"
     ],
-    "homepage": "https://startbootstrap.com/template-overviews/sb-admin-2",
+    "homepage": "https://oracles.club",
     "bugs": {
-        "url": "https://github.com/BlackrockDigital/startbootstrap-sb-admin-2/issues",
-        "email": "feedback@startbootstrap.com"
+        "url": "https://github.com/Dragonfly-Capital/oracle.club-site/issues",
+        "email": "tom@dcp.capital"
     },
     "license": "MIT",
-    "author": "Start Bootstrap",
+    "author": "Dragonfly Capital",
     "contributors": [
-        "David Miller (http://davidmiller.io/)"
+        "Tom Schmidt (http://tomhschmidt.com/)"
     ],
     "repository": {
         "type": "git",
-        "url": "https://github.com/BlackrockDigital/startbootstrap-sb-admin-2.git"
+        "url": "https://github.com/Dragonfly-Capital/oracle.club-site.git"
     },
     "dependencies": {
         "@fortawesome/fontawesome-free": "5.10.2",
