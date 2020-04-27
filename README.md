@@ -44,7 +44,6 @@
 ## Table of Contents
 
 * [About the Project](#about-the-project)
-  * [Built With](#built-with)
 * [Getting Started](#getting-started)
   * [Prerequisites](#prerequisites)
   * [Installation](#installation)
@@ -60,16 +59,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
-
-### Built With
-
-* []()
-* []()
-* []()
-
-
+Built with love by [Dragonfly Capital](https://www.dcp.capital/)
 
 <!-- GETTING STARTED -->
 ## Getting Started
