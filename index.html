@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>oracles.club</title>
+  <title>𝖔𝖗𝖆𝖈𝖑𝖊𝖘.𝖈𝖑𝖚𝖇</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -17,6 +17,12 @@
 
   <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
+  <!-- <link href="css/docs.css" rel="stylesheet"> -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/98.css"
+  >
+  
 
 </head>
 <link rel="icon" 
@@ -90,67 +96,6 @@
           <span>Coinbase</span></a>
       </li>
 
-
-
-      <!-- Nav Item - Utilities Collapse Menu -->
-      <!-- <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-          <i class="fas fa-fw fa-wrench"></i>
-          <span>Utilities</span>
-        </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Utilities:</h6>
-            <a class="collapse-item" href="utilities-color.html">Colors</a>
-            <a class="collapse-item" href="utilities-border.html">Borders</a>
-            <a class="collapse-item" href="utilities-animation.html">Animations</a>
-            <a class="collapse-item" href="utilities-other.html">Other</a>
-          </div>
-        </div>
-      </li> -->
-
-      <!-- Divider -->
-      <!-- <hr class="sidebar-divider"> -->
-
-      <!-- Heading -->
-      <!-- <div class="sidebar-heading">
-        Addons
-      </div> -->
-
-      <!-- Nav Item - Pages Collapse Menu -->
-      <!-- <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
-          <i class="fas fa-fw fa-folder"></i>
-          <span>Pages</span>
-        </a>
-        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Login Screens:</h6>
-            <a class="collapse-item" href="login.html">Login</a>
-            <a class="collapse-item" href="register.html">Register</a>
-            <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-            <div class="collapse-divider"></div>
-            <h6 class="collapse-header">Other Pages:</h6>
-            <a class="collapse-item" href="404.html">404 Page</a>
-            <a class="collapse-item" href="blank.html">Blank Page</a>
-          </div>
-        </div>
-      </li> -->
-
-      <!-- Nav Item - Charts -->
-      <!-- <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-          <i class="fas fa-fw fa-chart-area"></i>
-          <span>Charts</span></a>
-      </li> -->
-
-      <!-- Nav Item - Tables -->
-      <!-- <li class="nav-item">
-        <a class="nav-link" href="tables.html">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Tables</span></a>
-      </li> -->
-
       <!-- Divider -->
       <!-- <hr class="sidebar-divider d-none d-md-block"> -->
 
@@ -169,13 +114,10 @@
       <div id="content">
 
         <!-- Topbar -->
-        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+        <nav class="d-flex flex-row navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
           <!-- Sidebar Toggle (Topbar) -->
           <h1>oracles.club</h1>
-          <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-            <i class="fa fa-bars"></i>
-          </button>
 
           <!-- Topbar Search -->
           <!-- <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
@@ -188,6 +130,10 @@
               </div>
             </div>
           </form> -->
+
+          <div class="navbar-nav ml-auto">
+            <h5><a href="https://github.com/Dragonfly-Capital/oracle.club-site">Made by Dragonfly Capital</a></h5>
+          </div>
 
 
         </nav>
@@ -227,15 +173,16 @@
   </div>
   <!-- End of Page Wrapper -->
 
-  <div class="modal" id="historical-data-modal" tabindex="-1" role="dialog">
+  <div class="window modal" id="historical-data-modal" tabindex="-1" role="dialog" style="background:none;">
     <div class="modal-dialog" role="document">
       <div class="modal-content"  style="height: 40rem; width:50rem;">
-        <div class="modal-header">
-          <h5 class="modal-title" id="historical-data-modal-title"></h5>
-          <h6 class="modal-title" id="historical-data-modal-subtitle"></h6>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+        <div class="title-bar">
+          <div class="title-bar-text" id="historical-data-modal-title">A Window With Stuff In It</div>
+          <div class="title-bar-controls">
+            <button aria-label="Minimize" data-dismiss="modal"></button>
+            <button aria-label="Maximize"></button>
+            <button aria-label="Close" data-dismiss="modal"></button>
+          </div>
         </div>
         <div class="modal-body">
           <canvas id="historical-data-chart"></canvas>
@@ -246,7 +193,7 @@
       </div>
     </div>
   </div>
-
+  
   <!-- Scroll to Top Button-->
   <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
