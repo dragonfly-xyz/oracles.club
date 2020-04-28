@@ -120,7 +120,7 @@
       <div id="content">
 
         <!-- Topbar -->
-        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top  ">
 
           <!-- Sidebar Toggle (Topbar) -->
           <h2>oracles.club</h2>
@@ -143,7 +143,7 @@
           <!-- Content Row -->
           <div class="row">
             <!-- DataTales Example -->
-            <div class="card border-left-primary shadow h-100 col-xl-6 col-md-4 mb-4 py-2">
+            <div class="card h-100 col-xl-6 col-md-4 mb-4 py-2">
               <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">About</h6>
               </div>
@@ -158,8 +158,53 @@
                 </div>
               </div>
             </div>
+            <div class="card h-100 col-xl-6 col-md-4 mb-4 py-2">
+              <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Pros / Cons</h6>
+              </div>
+              <div class="card-body">
+                <table class="table table-bordered" style="font-size:16px" width="100%" cellspacing="0">
+                  <thead>
+                      <tr>
+                          <th>Pros</th>
+                          <th>Cons</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Reference price data is free to access</td>
+                      <td>Reference price feeds require on-chain transactions from every participant</td>
+                    </tr>
+                    <tr>
+                      <td>Link nodes for custom data feeds quick to setup</td>
+                      <td>Users must trust ChainLink’s determined set of parties to provide the correct pricing data</td>
+                    </tr>
+                    <tr>
+                      <td>Easy API for application developers</td>
+                      <td>Trusted node list and reference data feed whitelists are controlled by ChainLink</td>
+                    </tr>
+                  </table>
+              </div>
+            </div>
+          </div> <!-- /.row-->
+          <div class="row">
+            <div class="card h-100 col-xl-6 col-md-4 mb-4 py-2">
+              <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Useful Links</h6>
+              </div>
+              <div class="card-body">
+                <h4>Contract Addresses</h4>
+                <ul>
+                    <li><a href="https://etherscan.io/address/0xF79D6aFBb6dA890132F9D7c355e3015f15F3406F">ETH/USD</a></li>
+                    <li><a href="https://etherscan.io/address/0x9b4e2579895efa2b4765063310dc4109a7641129">BAT/USD</a></li>
+                    <li><a href="https://etherscan.io/address/0xF5fff180082d6017036B771bA883025c654BC93">BTC/USD</a></li>
+                  </ul>
+                <h4><a href="https://docs.chain.link/docs/decentralized-oracles-ethereum-mainnet">Developer Documentation</a></h4>
+                <h4><a href="https://feeds.chain.link/">Feed Data</a></h4>
+              </div>
+            </div>
 
-            <div class="card border-left-primary shadow h-100 col-xl-6 col-md-4 mb-4 py-2">
+            <div class="card    h-100 col-xl-6 col-md-4 mb-4 py-2">
               <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">Used By</h6>
               </div>
@@ -194,23 +239,6 @@
                     <ul><li> Users must trust a bounded set of parties to provide the correct pricing data</li></ul>
                   </ul>
                 </div> -->
-              </div>
-            </div>
-          </div> <!-- /.row-->
-          <div class="row">
-            <div class="card border-left-primary shadow h-100 col-xl-6 col-md-4 mb-4 py-2">
-              <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Useful Links</h6>
-              </div>
-              <div class="card-body">
-                <h4>Contract Addresses</h4>
-                <ul>
-                    <li><a href="https://etherscan.io/address/0xF79D6aFBb6dA890132F9D7c355e3015f15F3406F">ETH/USD</a></li>
-                    <li><a href="https://etherscan.io/address/0x9b4e2579895efa2b4765063310dc4109a7641129">BAT/USD</a></li>
-                    <li><a href="https://etherscan.io/address/0xF5fff180082d6017036B771bA883025c654BC93">BTC/USD</a></li>
-                  </ul>
-                <h4><a href="https://docs.chain.link/docs/decentralized-oracles-ethereum-mainnet">Developer Documentation</a></h4>
-                <h4><a href="https://feeds.chain.link/">Feed Data</a></h4>
               </div>
             </div>
           </div>
