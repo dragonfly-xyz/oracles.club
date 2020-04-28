@@ -125,7 +125,7 @@ Project Link: [https://github.com/Dragonfly-Capital/oracles.club](https://github
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
 
-* []()
+* Ashwin Ramachandran
 * []()
 * []()
 
