@@ -186,8 +186,8 @@
           </div>
         </div>
         <div class="modal-header" style="justify-content: start;">
-            <legend>Today's mood</legend>
-            <div class="field-row">
+            <!-- <legend>Today's mood</legend> -->
+            <!-- <div class="field-row">
               <input id="radio13" type="radio" name="fieldset-example2">
               <label for="radio13">Claire Saffitz</label>
             </div>
@@ -202,7 +202,14 @@
             <div class="field-row">
               <input id="radio16" type="radio" name="fieldset-example2">
               <label for="radio16">Carla Lalli Music</label>
-            </div>
+            </div> -->
+            <label style="padding-right: 15px;">Time Period</label>
+            <select id="historical-data-time-period-selector">
+              <option value="86400000">1 Day</option>
+              <option selected value="604800000">7 Days</option>
+              <option value="2419200000">28 Days</option>
+              <option value="7776000000">90 Days</option>
+            </select>
         </div>
         <div class="modal-body">
 

@@ -29,6 +29,16 @@ function number_format(number, decimals, dec_point, thousands_sep) {
 var ws;
 var historicalLineChart;
 
+function lastIndexBeforeTimestamp(timestamp, data) {
+    for(var i = data.length-1; i > 0; i--) {
+        if(timestamp <= parseInt(data[i].timestamp)) {
+            continue;
+        } else {
+            return i;
+        }
+    }
+}
+
 function renderDataOnChart(chartID, data) {
 
     console.log("Rendering " + chartID);
@@ -141,7 +151,26 @@ var lastUpdatedTimer = setInterval(() => {
     }
 }, 1000);
 
+var curHistoricalData;
+
+function renderSelectedData() {
+    if(!curHistoricalData) return;
+
+    var maxIndex = curHistoricalData.length-1;
+    var minTimestamp = (Date.now() - $('#historical-data-time-period-selector').val()) / 1000;
+    var minIndex = lastIndexBeforeTimestamp(minTimestamp, curHistoricalData); // Math.max(0, maxIndex - 1000);
+    renderDataOnChart("historical-data-chart", curHistoricalData.slice(minIndex,maxIndex));
+}
+
 $(document).ready(function(e) {
+    $('#historical-data-time-period-selector').change(() => {
+        renderSelectedData();
+    })
+    $("#historical-data-modal").on("hidden.bs.modal", function () {
+        // put your default event here
+        $('#historical-data-time-period-selector').val("604800000");
+    });
+
     ws = new WebSocket('wss://api.oracles.club:5678');
     ws.onmessage = function(e) {
         console.log(e);
@@ -220,9 +249,9 @@ $(document).ready(function(e) {
                             value.date = new Date(value.timestamp * 1000);
                             return value;
                         })
-                        var maxIndex = cleanRequestData.length-1
-                        var minIndex = Math.max(0, maxIndex - 1000);
-                        renderDataOnChart("historical-data-chart", cleanRequestData.slice(minIndex,maxIndex));
+
+                        curHistoricalData = cleanRequestData;
+                        renderSelectedData();
                     });
                     $('#historical-data-modal').modal();
                 })

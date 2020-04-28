@@ -1,7 +1,7 @@
 {
     "title": "oracles.club",
     "name": "oracles.club",
-    "version": "0.1",
+    "version": "0.0.1",
     "scripts": {
         "start": "node_modules/.bin/gulp watch"
     },
