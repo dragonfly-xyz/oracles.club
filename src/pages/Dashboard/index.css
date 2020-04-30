@@ -1,0 +1,118 @@
+.dashboard-content {
+	width: 100%;
+	text-align: left;
+	transform: translateY(-40px);
+}
+
+.table {
+	background-color: #fff;
+	box-shadow: 0 0 35px rgba(127,150,174,.125);
+	border: 1px solid rgb(231, 234, 243);
+	border-radius: 8px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.table > div:first-child {
+	padding-left: 20px;
+	padding-bottom: 10px;
+}
+
+.table button {
+	border: none;
+	color: #337afe;
+	font-size: 15px;
+	font-weight: 500;
+	transition: 50ms ease-in-out;
+	cursor: pointer;
+}
+
+.table button:hover {
+	color: #0150e3;
+}
+
+.table > div:first-child > p:first-child {
+	color: #6984aa;
+	font-weight: 500;
+	font-size: 18px;
+	margin-block-end: 5px;
+}
+
+.price-table {
+	border: none !important;
+}
+
+.price-table > div > .rt-thead {
+	background-color: #f8fafd;
+	border-top: 1px solid rgb(231, 234, 243);
+	border-bottom: 1px solid rgb(231, 234, 243);
+	height: 40px;
+	font-size: 13px;
+	text-transform: uppercase;
+	color: #7f96ae;
+	font-weight: 700;
+	box-shadow: none !important;
+}
+
+.price-table > div > .rt-thead > div > div {
+	border-right: none !important;
+}
+
+.price-table > div > .rt-thead > div > div > div:first-child {
+	padding-top: 7px;
+	text-align: left;
+}
+
+.price-table > div > .rt-thead > div > div:first-child > div:first-child {
+	padding-left: 15px;
+	color: #337afe;
+}
+
+.price-table > div > .rt-tbody > .rt-tr-group {
+	line-height: 30px;
+	font-size: 15.5px;
+}
+
+.price-table > div > .rt-tbody > .rt-tr-group > div > div:first-child {
+	padding-left: 18px;
+}
+
+.price-table > div > .rt-tbody > .rt-tr-group > div > div > a {
+	color: #337afe;
+	text-decoration: none;
+	font-weight: 500;
+	transition: 50ms ease-in-out;
+}
+
+.price-table > div > .rt-tbody > .rt-tr-group > div > div > a:hover {
+	color: #0150e3;
+}
+
+.price-table > div > .rt-tbody > .rt-tr-group > div > div {
+	border-right: none;
+}
+
+.price-table > div > .rt-tbody > div {
+	border-bottom-color: rgb(231, 234, 243) !important;
+}
+
+/* Custom sizing based on column content */
+.price-table > div > .rt-thead > div > div:nth-child(1), .price-table > div > .rt-tbody > div > div > div:nth-child(1) {
+	min-width: 120px;
+}
+
+.price-table > div > .rt-thead > div > div:nth-child(2), .price-table > div > .rt-tbody > div > div > div:nth-child(2) {
+	min-width: 120px;
+}
+
+.price-table > div > .rt-thead > div > div:nth-child(3), .price-table > div > .rt-tbody > div > div > div:nth-child(3) {
+	min-width: 130px;
+}
+
+.price-table > div > .rt-thead > div > div:nth-child(4), .price-table > div > .rt-tbody > div > div > div:nth-child(4) {
+	min-width: 120px;
+}
+
+.price-table > div:nth-child(1) > div {
+	min-width: 490px !important;
+}
