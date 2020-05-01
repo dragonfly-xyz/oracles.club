@@ -6,7 +6,9 @@ import ReactTable from 'react-table-6';
 import 'react-table-6/react-table.css';
 import { NavLink } from 'react-router-dom';
 import moment from 'moment';
-import Modal from 'react-modal';
+import 'react-responsive-modal/styles.css';
+import { Modal } from 'react-responsive-modal';
+import { Line } from 'react-chartjs-2';
 
 const client = new W3CWebSocket('wss://api.oracles.club:5678');
 
@@ -19,7 +21,7 @@ export default class Dashboard extends React.Component {
 			BTCUSD: [],
 			BATUSD: [],
 			loading: true,
-			modalIsOpen: false,
+			modalOpen: false,
 			modalData: '',
 		}
 	}
@@ -39,15 +41,15 @@ export default class Dashboard extends React.Component {
 
 		// Setup appropriate formatting for react-table
 		for (var eth_price_feed of Object.keys(ETHUSDData)) {
-			ETHUSD.push({"price_feed": eth_price_feed, ...ETHUSDData[eth_price_feed], "linked": [ETHUSDData[eth_price_feed].cur_price, eth_price_feed.toLowerCase() + "ETH"]});
+			ETHUSD.push({"price_feed": eth_price_feed, ...ETHUSDData[eth_price_feed], "linked": [ETHUSDData[eth_price_feed].cur_price, {"price_feed": eth_price_feed.toLowerCase(), "currency": "ETH"}]});
 		}
 
 		for (var btc_price_feed of Object.keys(BTCUSDData)) {
-			BTCUSD.push({"price_feed": btc_price_feed, ...BTCUSDData[btc_price_feed], "linked": [BTCUSDData[btc_price_feed].cur_price, btc_price_feed.toLowerCase() + "BTC"]});
+			BTCUSD.push({"price_feed": btc_price_feed, ...BTCUSDData[btc_price_feed], "linked": [BTCUSDData[btc_price_feed].cur_price, {"price_feed": btc_price_feed.toLowerCase(), "currency": "BTC"}]});
 		}
 
 		for (var bat_price_feed of Object.keys(BATUSDData)) {
-			BATUSD.push({"price_feed": bat_price_feed, ...BATUSDData[bat_price_feed], "linked": [BATUSDData[bat_price_feed].cur_price, bat_price_feed.toLowerCase() + "BAT"]});
+			BATUSD.push({"price_feed": bat_price_feed, ...BATUSDData[bat_price_feed], "linked": [BATUSDData[bat_price_feed].cur_price, {"price_feed": bat_price_feed.toLowerCase(), "currency": "BAT"}]});
 		}
 
 		this.setState({
@@ -59,19 +61,23 @@ export default class Dashboard extends React.Component {
 	};
 
 	componentWillMount() {
-		client.onopen = () => {
-			console.log("WebSocket connected");
-		};
 		client.onmessage = message => {
 			this.renderDashboard(message);
 		};
 	}
 
 	openModal = historic_string => {
-		this.setState({modalData: historic_string, modalIsOpen: true});
+		this.setState({modalData: historic_string, modalOpen: true});
 	}
+
 	closeModal = () => {
-		this.setState({modalIsOpen: false});
+		this.setState({modalOpen: false});
+	}
+
+	capitalize = string => {
+		if (typeof string !== 'undefined') {
+			return string.charAt().toUpperCase() + string.slice(1);
+		}
 	}
 
 	render() {
@@ -84,13 +90,48 @@ export default class Dashboard extends React.Component {
 			{Header: 'Previous Value', accessor: 'prev_price', Cell: props => <span>${props.value.toFixed(2)}</span>},
 		];
 
+		const data = {
+			labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+			datasets: [
+				{
+				label: 'Oracle price',
+				fill: false,
+				lineTension: 0.1,
+				backgroundColor: 'rgba(75,192,192,0.4)',
+				borderColor: 'rgba(75,192,192,1)',
+				borderCapStyle: 'butt',
+				borderDash: [],
+				borderDashOffset: 0.0,
+				borderJoinStyle: 'miter',
+				pointBorderColor: 'rgba(75,192,192,1)',
+				pointBackgroundColor: '#fff',
+				pointBorderWidth: 1,
+				pointHoverRadius: 5,
+				pointHoverBackgroundColor: 'rgba(75,192,192,1)',
+				pointHoverBorderColor: 'rgba(220,220,220,1)',
+				pointHoverBorderWidth: 2,
+				pointRadius: 1,
+				pointHitRadius: 10,
+				data: [65, 59, 80, 81, 56, 55, 40]
+				}
+			]
+		};
+
 		return (
 			<Layout dashboard>
 				<Modal
-					isOpen={this.state.modalIsOpen}
-					onRequestClose={this.closeModal}
+					open={this.state.modalOpen}
+					onClose={this.closeModal}
+					classNames={["oracle-modal"]}
+					center
 				>	
-					<p>Pull data from https://api.oracles.club/{this.state.modalData} and display</p>
+					<div className="modal-header">
+						<h3>Historical {this.state.modalData.currency}USD data for {this.capitalize(this.state.modalData.price_feed)}</h3>
+						<p>Select a time period to filter query.</p>
+					</div>
+					<div className="modal-content">
+						<Line data={data} />
+					</div>
 				</Modal>
 				<div className="dashboard-content sizer">
 					<div className="table">
