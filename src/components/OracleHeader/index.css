@@ -1,0 +1,48 @@
+.oracleselect > h4 {
+	margin-block-start: 15px;
+	color: #022137;
+	font-weight: 600;
+	font-size: 17px;
+	margin-block-end: 8px;
+}
+
+.owl-item {
+	background-color: #fff;
+	border: 1px solid #e7eaf3;
+	border-radius: 7px;
+	height: 50px;
+	transition: 100ms ease-in-out;
+}
+
+.owl-item:hover {
+	background-color: #337afe;
+	color: #fff;
+}
+
+.selected {
+	background-color: #337afe !important;
+	border-color: #337afe !important;
+	color: #fff !important;
+}
+
+.owl-item > a {
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+	border-radius: 6.5px;
+}
+
+.owl-item:hover > a {
+	color: #fff;
+}
+
+.owl-item > a {
+	text-decoration: none;
+	color: #6984aa;
+	font-weight: 600;
+	font-size: 14px;
+}
+
+.owl-item > a > h3 {
+	margin-block-start: 17px;
+}

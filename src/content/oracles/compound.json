@@ -1,0 +1,20 @@
+{
+	"About": "The decentralized lending platform Compound uses a custom application-specific price oracle.\nCompound’s oracle relies on a single, centralized poster (price gathering script) to pull the price of a basket of assets relative to Ether from many different exchange sources. This trusted party then posts price updates to the blockchain each time it detects a 1% deviation in price. The newly reported price must be within a 10% bound of an anchor price that is updated every hour. Large price movements (>10%) must be set manually using a corresponding, specific hardware key. This key is currently controlled by the Compound team.\nCompound has also developed a second oracle design they call the Compound Open Oracle System. Using the Open Oracle system, anyone wishing to report a price can do so. This report is then propagated via a p2p network to all other nodes in the system. Anyone with gas and a connection to the Ethereum network can then post the signed price data on-chain. A single on-chain contract, known as the Data Contract, is responsible for holding and validating all price data. This contract sorts the reported information by price reporter. Any on-chain application can request to view price data by selecting a subset of the reported price feeds. While Compound expects to productionize this oracle in the near future (still completing audits), it has yet to be launched on the Ethereum mainnet.",
+	"Used By": {
+		"compound.png": "https://compound.finance/"
+	},
+	"Useful Links": {
+		"GitHub": "https://github.com/compound-finance/open-oracle",
+		"Documentation": "https://github.com/compound-finance/open-oracle",
+		"FAQ": "https://medium.com/compound-finance/faq-1a2636713b69",
+		"Blog Post": "https://medium.com/compound-finance/announcing-compound-open-oracle-development-cff36f06aad3",
+		"Contract Etherscan Link": "https://etherscan.io/address/0x02557a5e05defeffd4cae6d83ea3d173b272c904"
+	},
+	"Pros": [
+		"Fast. Updates are frequent and query responses are instant"
+	],
+	"Cons": [
+		"Centralized. Compound retains sole ownership over the oracle's reported prices",
+		"Users must trust Compound to provide the correct pricing data"
+	]
+}

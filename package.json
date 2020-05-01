@@ -1,54 +1,46 @@
 {
-    "title": "oracles.club",
-    "name": "oracles.club",
-    "version": "0.0.1",
-    "scripts": {
-        "start": "node_modules/.bin/gulp watch"
-    },
-    "description": "the only club you need to join for ethereum oracle data",
-    "keywords": [
-        "ethereum",
-        "eth",
-        "oracles",
-        "maker",
-        "coinbase",
-        "chainlink",
-        "uniswap",
-        "dfusion"
+  "name": "oracles.club",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "axios": "^0.19.2",
+    "chart.js": "^2.9.3",
+    "moment": "^2.24.0",
+    "react": "^16.13.1",
+    "react-chartjs-2": "^2.9.0",
+    "react-dom": "^16.13.1",
+    "react-hamburger-button": "^0.0.1",
+    "react-owl-carousel": "^2.3.1",
+    "react-responsive-modal": "^5.0.2",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "3.4.1",
+    "react-select": "^3.1.0",
+    "react-table-6": "^6.11.0",
+    "react-timeago": "^4.4.0",
+    "websocket": "^1.0.31"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
     ],
-    "homepage": "https://oracles.club",
-    "bugs": {
-        "url": "https://github.com/Dragonfly-Capital/oracle.club-site/issues",
-        "email": "tom@dcp.capital"
-    },
-    "license": "MIT",
-    "author": "Dragonfly Capital",
-    "contributors": [
-        "Tom Schmidt (http://tomhschmidt.com/)"
-    ],
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/Dragonfly-Capital/oracle.club-site.git"
-    },
-    "dependencies": {
-        "@fortawesome/fontawesome-free": "5.10.2",
-        "bootstrap": "4.3.1",
-        "chart.js": "2.8.0",
-        "datatables.net-bs4": "1.10.19",
-        "jquery": "3.4.1",
-        "jquery.easing": "^1.4.1"
-    },
-    "devDependencies": {
-        "browser-sync": "2.26.7",
-        "del": "5.1.0",
-        "gulp": "4.0.2",
-        "gulp-autoprefixer": "7.0.0",
-        "gulp-clean-css": "4.2.0",
-        "gulp-header": "2.0.9",
-        "gulp-plumber": "^1.2.1",
-        "gulp-rename": "1.4.0",
-        "gulp-sass": "4.0.2",
-        "gulp-uglify": "3.0.2",
-        "merge-stream": "2.0.0"
-    }
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
 }

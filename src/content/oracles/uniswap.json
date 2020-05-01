@@ -1,0 +1,19 @@
+{
+	"About": "Uniswap is a constant-product automated market maker (or constant-product AMM), that allows users to exchange asset pairs on the Ethereum blockchain as long as a predetermined product of the reserves remains constant. Uniswap exists entirely on the Ethereum blockchain, and is completely decentralized, with no single party having control of the asset pool or prices. Uniswap’s reserve balances are public and viewable by any party at any time, thus Uniswap can be used as a price oracle to determine the marginal price of an asset.\nUniswap relies on arbitrageurs to ensure its quoted asset prices are close to the reference market price. If the price quoted by Uniswap differs from the true market price of the traded pair, arbitrageurs can always make a profit from executing a trade with this oracle. Thus, it is always likely to trade close to a reference market price.\nUsing Uniswap as an oracle does have downsides, however, as low liquidity asset pools are vulnerable to relatively inexpensive manipulation as was demonstrated in the bZx attack. Thus, Uniswap should only be used as an oracle if the service using it does not depend on relatively small changes in market price, or over a very short period of time.\nUniswap v2 will incorporate price feeds focused on solving both of the above problems. Each traded pair measures the current Uniswap market price at the beginning of each block. This price iis set by the last transaction in a previous block, and is thus expensive to manipulate. Uniswap V2 adds this end-of-block price to a cumulative-price variable in the contract that is weighted by the time this price has existed. This variable represents a sum of the Uniswap price for every second in the entire history of the contract. External contracts seeking a manipulation resistant price from Uniswap can read this variable and calculate their required price.",
+	"Contract Addresses": {
+		"ETH/USDC": "https://etherscan.io/address/0x97dec872013f6b5fb443861090ad931542878126",
+		"wBTC/ETH": "https://etherscan.io/address/0x4d2f5cFbA55AE412221182D8475bC85799A5644b",
+		"BAT/USD": "https://etherscan.io/address/0x2e642b8d59b45a1d8c5aef716a84ff44ea665914"
+	},
+	"Useful Links": {
+		"Developer Documentation": "https://uniswap.org/docs/v1",
+		"Blog Post": "https://medium.com/gauntlet-networks/why-is-uniswap-a-good-oracle-22d84e5b0b6c"
+	},
+	"Pros": [
+		"Easy to access/calculate prices in V1",
+		"All Uniswap contracts are completely autonomous and decentralized"
+	],
+	"Cons": [
+		"Vulnerable to manipulation in V1 (although this is expensive); especially, small pools"
+	]
+}
