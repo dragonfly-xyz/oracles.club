@@ -1,26 +1,20 @@
 {
-	"About": "MakerDAO uses a custom oracle managed by a group of 14 pseudonymous individuals and public organizations to determine asset prices and exchange rates for supported assets. The group of 14 participating feeds are determined by a DAO governance vote, and is subject to change.\nThe oracle itself consists of two modules, a broadcaster and relayer. Each feed runs a broadcaster which pulls asset prices, signs them with their private key, and broadcasts them through a secure network. A relayer monitors the broadcaster messages, ensures they are within a predetermined spread (1%), aggregates the data, and submits it to Ethereum as a single transaction. Before the Maker system updates with the new price, however, a time period enforced by the Oracle Security Module (OSM) must be waited. This ensures that new price values propagated by the system are not taken up until a specified time in the future.\nMaker does not have incentive structure for relayers or feeds, but have proposed one such model which would compensate feeds, relayers, and other participants for their contributions to the system. The current design also maintains a whitelist of specific addresses who can access the oracle’s data.",
+	"About": "The decentralized lending platform Compound uses a custom application-specific price oracle.\nCompound’s oracle relies on a single, centralized poster (price gathering script) to pull the price of a basket of assets relative to Ether from many different exchange sources. This trusted party then posts price updates to the blockchain each time it detects a 1% deviation in price. The newly reported price must be within a 10% bound of an anchor price that is updated every hour. Large price movements (>10%) must be set manually using a corresponding, specific hardware key. This key is currently controlled by the Compound team.\nCompound has also developed a second oracle design they call the Compound Open Oracle System. Using the Open Oracle system, anyone wishing to report a price can do so. This report is then propagated via a p2p network to all other nodes in the system. Anyone with gas and a connection to the Ethereum network can then post the signed price data on-chain. A single on-chain contract, known as the Data Contract, is responsible for holding and validating all price data. This contract sorts the reported information by price reporter. Any on-chain application can request to view price data by selecting a subset of the reported price feeds. While Compound expects to productionize this oracle in the near future (still completing audits), it has yet to be launched on the Ethereum mainnet.",
 	"Used By": {
-		"tokensets.png": "https://tokensets.com",
-		"dydx.png": "https://dydx.exchange/",
-		"ddex.png" : "https://ddex.io"
-	},
-	"Contract Addresses": {
-		"ETH/USD": "https://etherscan.io/address/0x81FE72B5A8d1A857d176C3E7d5Bd2679A9B85763",
-		"BTC/USD": "https://etherscan.io/address/0xe0f30cb149faadc7247e953746be9bbbb6b5751f",
-		"BAT/USD": "https://etherscan.io/address/0xB4eb54AF9Cc7882DF0121d26c5b97E802915ABe6"
+		"compound.png": "https://compound.finance/"
 	},
 	"Useful Links": {
-		"MakerDAO Price Feeds Page": "https://developer.makerdao.com/feeds",
-		"GitHub": "https://github.com/makerdao/oracles-v2",
-		"Blog Post": "https://blog.makerdao.com/introducing-oracles-v2-and-defi-feeds"
+		"GitHub": "https://github.com/compound-finance/open-oracle",
+		"Documentation": "https://github.com/compound-finance/open-oracle",
+		"FAQ": "https://medium.com/compound-finance/faq-1a2636713b69",
+		"Blog Post": "https://medium.com/compound-finance/announcing-compound-open-oracle-development-cff36f06aad3",
+		"Contract Etherscan Link": "https://etherscan.io/address/0x02557a5e05defeffd4cae6d83ea3d173b272c904"
 	},
 	"Pros": [
-		"Decentralized. Trusted feeds are determined through a decentralized governance process",
-		"Usability. API access for whitelisted addresses"
+		"Fast. Updates are frequent and query responses are instant"
 	],
 	"Cons": [
-		"Slow. OSM (oracle security module) prevents price updates from being reflected immediately",
-		"Semi-trusted. Users must trust a bounded set of parties to provide the correct pricing data"
+		"Centralized. Compound retains sole ownership over the oracle's reported prices",
+		"Users must trust Compound to provide the correct pricing data"
 	]
 }

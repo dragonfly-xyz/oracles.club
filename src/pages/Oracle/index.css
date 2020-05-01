@@ -29,6 +29,7 @@
 
 .oracle-page > div > div > div:nth-child(2) {
 	padding: 0px 20px;
+	min-height: 20px;
 }
 
 .oracle-page > div > div > div:nth-child(2) > p {

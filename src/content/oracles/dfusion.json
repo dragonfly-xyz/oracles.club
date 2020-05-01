@@ -1,26 +1,14 @@
 {
-	"About": "MakerDAO uses a custom oracle managed by a group of 14 pseudonymous individuals and public organizations to determine asset prices and exchange rates for supported assets. The group of 14 participating feeds are determined by a DAO governance vote, and is subject to change.\nThe oracle itself consists of two modules, a broadcaster and relayer. Each feed runs a broadcaster which pulls asset prices, signs them with their private key, and broadcasts them through a secure network. A relayer monitors the broadcaster messages, ensures they are within a predetermined spread (1%), aggregates the data, and submits it to Ethereum as a single transaction. Before the Maker system updates with the new price, however, a time period enforced by the Oracle Security Module (OSM) must be waited. This ensures that new price values propagated by the system are not taken up until a specified time in the future.\nMaker does not have incentive structure for relayers or feeds, but have proposed one such model which would compensate feeds, relayers, and other participants for their contributions to the system. The current design also maintains a whitelist of specific addresses who can access the oracle’s data.",
-	"Used By": {
-		"tokensets.png": "https://tokensets.com",
-		"dydx.png": "https://dydx.exchange/",
-		"ddex.png" : "https://ddex.io"
-	},
-	"Contract Addresses": {
-		"ETH/USD": "https://etherscan.io/address/0x81FE72B5A8d1A857d176C3E7d5Bd2679A9B85763",
-		"BTC/USD": "https://etherscan.io/address/0xe0f30cb149faadc7247e953746be9bbbb6b5751f",
-		"BAT/USD": "https://etherscan.io/address/0xB4eb54AF9Cc7882DF0121d26c5b97E802915ABe6"
-	},
+	"About": "Dfusion is a decentralized exchange that uses batch auctions and a multi-dimensional order book to set prices for asset pairs. Unlike Constant-Function Market Makers or traditional exchanges that maintain separate liquidity pools/order books for individual asset pairs, Dfusion aggregates all orders into a single multi-dimensional order book that consists of multiple different token pairs. It then uses a time-based batch auction to set cleaning prices for each token exchanged in a batch. Batch auction settlement prices can be used as an oracle service by projects seeking access to an on-chain oracle service.\nDfusion’s settlement times occur approximately every 5 minutes. All orders submitted before a batch is settled can be included in the final settlement. The auction accepts settlement proposals from anyone. Solutions are simply checked for validity and if they are ‘better’ than existing solutions. If a solutions is judged to be ‘better’ than another, it replaces the previous solution. All trades are finalized after 5 minutes.",
 	"Useful Links": {
-		"MakerDAO Price Feeds Page": "https://developer.makerdao.com/feeds",
-		"GitHub": "https://github.com/makerdao/oracles-v2",
-		"Blog Post": "https://blog.makerdao.com/introducing-oracles-v2-and-defi-feeds"
+		"Contract Etherscan Link": "https://etherscan.io/address/0x6f400810b62df8e13fded51be75ff5393eaa841f",
+		"Developer Guide": "https://docs.gnosis.io/protocol/docs/devguide01/",
+		"Spec": "https://github.com/gnosis/dex-research/blob/master/dFusion/dfusion.v1.pdf"
 	},
 	"Pros": [
-		"Decentralized. Trusted feeds are determined through a decentralized governance process",
-		"Usability. API access for whitelisted addresses"
+		"Decentralized. Order book and auction process take place entirely on-chain"
 	],
 	"Cons": [
-		"Slow. OSM (oracle security module) prevents price updates from being reflected immediately",
-		"Semi-trusted. Users must trust a bounded set of parties to provide the correct pricing data"
+		"Settlement speed. Batch trades settle approximately once every 5 minutes"
 	]
 }
