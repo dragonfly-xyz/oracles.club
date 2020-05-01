@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import './index.css';
 import Layout from '../../components/Layout';
 import { w3cwebsocket as W3CWebSocket } from 'websocket';
@@ -9,8 +10,7 @@ import moment from 'moment';
 import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
 import { Line } from 'react-chartjs-2';
-
-const client = new W3CWebSocket('wss://api.oracles.club:5678');
+import Select from 'react-select';
 
 export default class Dashboard extends React.Component {
 	constructor() {
@@ -23,6 +23,7 @@ export default class Dashboard extends React.Component {
 			loading: true,
 			modalOpen: false,
 			modalData: '',
+			selectedOption: { value: '1', label: '1 Day'}
 		}
 	}
 
@@ -61,6 +62,7 @@ export default class Dashboard extends React.Component {
 	};
 
 	componentWillMount() {
+		const client = new W3CWebSocket('wss://api.oracles.club:5678');
 		client.onmessage = message => {
 			this.renderDashboard(message);
 		};
@@ -68,6 +70,14 @@ export default class Dashboard extends React.Component {
 
 	openModal = historic_string => {
 		this.setState({modalData: historic_string, modalOpen: true});
+		axios({
+			method: 'get',
+			url: `https://api.oracles.club/${historic_string.price_feed}${historic_string.currency}`
+		}).then(response => {
+			this.setState({historicData: response.data}, () => console.log(this.state.historicData));
+		}).catch(error => {
+			console.log("Exception when retrieving historic data: " + error);
+		})
 	}
 
 	closeModal = () => {
@@ -80,6 +90,10 @@ export default class Dashboard extends React.Component {
 		}
 	}
 
+	changeSelectedOption = selectedOption => {
+		this.setState({ selectedOption }, () => console.log(this.state.selectedOption));
+	};
+
 	render() {
 
 		// Table columns
@@ -90,29 +104,35 @@ export default class Dashboard extends React.Component {
 			{Header: 'Previous Value', accessor: 'prev_price', Cell: props => <span>${props.value.toFixed(2)}</span>},
 		];
 
+		// Dropdown options
+		const options = [
+			{ value: '1', label: '1 Day'},
+			{ value: '7', label: '7 Days'},
+			{ value: '28', label: '28 Days'},
+			{ value: '90', label: '90 Days'},
+		];
+
 		const data = {
 			labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
 			datasets: [
 				{
 				label: 'Oracle price',
 				fill: false,
-				lineTension: 0.1,
-				backgroundColor: 'rgba(75,192,192,0.4)',
-				borderColor: 'rgba(75,192,192,1)',
+				lineTension: 0.3,
+				backgroundColor: 'rgba(78, 115, 223, 0.05)',
+				borderColor: 'rgba(37,109,241,1)',
 				borderCapStyle: 'butt',
-				borderDash: [],
-				borderDashOffset: 0.0,
 				borderJoinStyle: 'miter',
-				pointBorderColor: 'rgba(75,192,192,1)',
+				pointBorderColor: 'rgba(78, 115, 223, 1)',
 				pointBackgroundColor: '#fff',
 				pointBorderWidth: 1,
 				pointHoverRadius: 5,
-				pointHoverBackgroundColor: 'rgba(75,192,192,1)',
-				pointHoverBorderColor: 'rgba(220,220,220,1)',
+				pointHoverBackgroundColor: 'rgba(37,109,241,1)',
+				pointHoverBorderColor: 'rgba(37,109,241,1)',
 				pointHoverBorderWidth: 2,
-				pointRadius: 1,
+				pointRadius: 3,
 				pointHitRadius: 10,
-				data: [65, 59, 80, 81, 56, 55, 40]
+				data: this.state.historicData ? this.state.historicData : ''
 				}
 			]
 		};
@@ -130,6 +150,7 @@ export default class Dashboard extends React.Component {
 						<p>Select a time period to filter query.</p>
 					</div>
 					<div className="modal-content">
+						<Select value={this.state.selectedOption} placeholder="Time period" onChange={this.changeSelectedOption} options={options} />
 						<Line data={data} />
 					</div>
 				</Modal>

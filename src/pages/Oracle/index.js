@@ -48,8 +48,6 @@ export default class Oracle extends React.Component {
 				break;
 		}
 
-		console.log(data);
-
 		this.setState({oracle: name, data: data});
 	}
 
