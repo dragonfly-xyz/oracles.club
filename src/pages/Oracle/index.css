@@ -1,19 +1,24 @@
 .oracle-page {
-	transform: translateY(5px);
+	transform: translateY(20px);
 	width: 100%;
-	padding-bottom: 20px;
+	padding-bottom: 50px;
 }
 
-.oracle-page > div {
+.oracle-page > center > div {
 	text-align: left;
+	display: grid;
+	grid-gap: 15px;
+	grid-template-columns: 1fr 1fr;
+	grid-auto-rows: auto;
 }
 
-.oracle-page > div > div {
+.oracle-page > center > div > div {
 	vertical-align: top;
 	padding-bottom: 10px;
+	margin: 0px;
 }
 
-.oracle-page > div > div > div:nth-child(1) {
+.oracle-page > center > div > div > div:nth-child(1) {
 	padding: 5px 20px;
 	width: calc(100% - 40px);
 	display: inline-block;
@@ -23,55 +28,45 @@
 	border-top-right-radius: 7px;
 }
 
-.oracle-page > div > div > div:nth-child(1) > p {
+.oracle-page > center > div > div > div:nth-child(1) > p {
 	margin-block-start: 7px;
 }
 
-.oracle-page > div > div > div:nth-child(2) {
+.oracle-page > center > div > div > div:nth-child(2) {
 	padding: 0px 20px;
 	min-height: 20px;
 }
 
-.oracle-page > div > div > div:nth-child(2) > p {
+.oracle-page > center > div > div > div:nth-child(2) > p {
 	line-height: 20px;
 }
 
-.oracle-page > div > div > div:nth-child(2) > a > img {
+.oracle-page > center > div > div > div:nth-child(2) > a > img {
 	max-width: 200px;
 }
 
-.oracle-page > div > div > div:nth-child(2) > h3 {
+.oracle-page > center > div > div > div:nth-child(2) > h3 {
 	margin-block-start: 10px;
 	margin-block-end: 0px;
 }
 
-.oracle-page > div > div > div:nth-child(2) > ul {
+.oracle-page > center > div > div > div:nth-child(2) > ul {
 	margin-block-start: 3px;
 }
 
-.oracle-page > div > div > div:nth-child(2) > ul > li > a, .oracle-page > div > div > div:nth-child(2) > h3 > a {
+.oracle-page > center > div > div > div:nth-child(2) > ul > li > a, .oracle-page > center > div > div > div:nth-child(2) > h3 > a {
 	text-decoration: none;
 	color: #337afe;
 	transition: 50ms ease-in-out;
 	font-weight: 500;
 }
 
-.oracle-page > div > div > div:nth-child(2) > ul > li > a:hover, .oracle-page > div > div > div:nth-child(2) > h3 > a:hover {
+.oracle-page > center > div > div > div:nth-child(2) > ul > li > a:hover, .oracle-page > center > div > div > div:nth-child(2) > h3 > a:hover {
 	color: #0150e3;
 }
 
-@media screen and (min-width: 1000px) {
-	.oracle-page > div {
-		text-align: center;
-	}
-
-	.oracle-page > div > div {
-		width: calc(50% - 15px);
-		display: inline-block;
-		text-align: left;
-	}
-
-	.oracle-page > div > div:nth-child(1), .oracle-page > div > div:nth-child(3) {
-		margin-right: 15px;
+@media screen and (max-width: 1000px) {
+	.oracle-page > center > div {
+		grid-template-columns: 1fr;
 	}
 }
