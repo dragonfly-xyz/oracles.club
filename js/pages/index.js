@@ -147,7 +147,7 @@ var lastUpdatedTimer = setInterval(() => {
     if(lastUpdatedAt) {
         var now = new Date();
         var diff = ((now - lastUpdatedAt) / 1000).toFixed(0);
-        $('#last-updated-label').text(`Last updated ${diff} seconds ago`); 
+        $('#last-updated-label').text(`Last updated ${diff} seconds ago`);
     }
 }, 1000);
 
@@ -172,14 +172,42 @@ $(document).ready(function(e) {
     });
 
     ws = new WebSocket('wss://api.oracles.club:5678');
-    ws.onmessage = function(e) {
-        console.log(e);
+    ws.onmessage = async function(e) {
         lastUpdatedAt = new Date();
         $('#price-feed-table-spinner').addClass('d-none');
         //$('#last-updated-label').text('Last updated at ' + now.toTimeString())
 
-
+        var ethusdPrev = ''
+        var btcusdPrev = ''
+        var batusdPrev = ''
         var update = JSON.parse(e.data);
+        const keys = Object.keys(update)
+        await Promise.all(keys.map(async key => {
+          if (key === "ETHUSD") {
+            data = await $.get("http://api.tellorscan.com/price/46")
+            if (ethusdPrev === '')
+              ethusdPrev = parseFloat(data.value)
+            update.ETHUSD.Tellor = {
+              cur_price: parseFloat(data.value),
+              last_updated: data.timestampRetrieved,
+              prev_price: ethusdPrev
+            }
+          } else if (key === "BTCUSD") {
+            data = await $.get("http://api.tellorscan.com/price/2")
+            update.BTCUSD.Tellor = {
+              cur_price: parseFloat(data.value),
+              last_updated: data.timestampRetrieved,
+              prev_price: parseFloat(data.value)
+            }
+          } else if (key === "BATUSD") {
+            data = await $.get("http://api.tellorscan.com/price/32")
+            update.BATUSD.Tellor = {
+              cur_price: parseFloat(data.value),
+              last_updated: data.timestampRetrieved,
+              prev_price: parseFloat(data.value)
+            }
+          }
+        }))
         const priceFeedMainSelector = '#price-feed-cards'
         for(var priceFeed in update) {
             var lowerPriceFeed = priceFeed.toLowerCase();
@@ -210,8 +238,8 @@ $(document).ready(function(e) {
 
             var priceFeedUpdate = update[priceFeed];
             var priceFeedTableSelector = `#${lowerPriceFeed}-price-table-body`;
-
             for(var protocol in priceFeedUpdate) {
+                console.log(protocol, priceFeedUpdate)
                 var lowerProtocol = protocol.toLowerCase();
                 var rowSelector = `${lowerPriceFeed}-${lowerProtocol}-price-feed`
                 var lastUpdatedDate = new Date(priceFeedUpdate[protocol].last_updated * 1000);

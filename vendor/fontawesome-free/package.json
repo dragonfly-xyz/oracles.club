@@ -1,10 +1,4 @@
 {
-  "_args": [
-    [
-      "@fortawesome/fontawesome-free@5.10.2",
-      "/Users/tomhschmidt/Projects/oracles.club"
-    ]
-  ],
   "_from": "@fortawesome/fontawesome-free@5.10.2",
   "_id": "@fortawesome/fontawesome-free@5.10.2",
   "_inBundle": false,
@@ -26,8 +20,9 @@
     "/"
   ],
   "_resolved": "https://registry.npmjs.org/@fortawesome/fontawesome-free/-/fontawesome-free-5.10.2.tgz",
-  "_spec": "5.10.2",
-  "_where": "/Users/tomhschmidt/Projects/oracles.club",
+  "_shasum": "27e02da1e34b50c9869179d364fb46627b521130",
+  "_spec": "@fortawesome/fontawesome-free@5.10.2",
+  "_where": "/Volumes/Work/Project/Tellor/Oracle club",
   "author": {
     "name": "Dave Gandy",
     "email": "dave@fontawesome.com",
@@ -36,6 +31,7 @@
   "bugs": {
     "url": "http://github.com/FortAwesome/Font-Awesome/issues"
   },
+  "bundleDependencies": false,
   "contributors": [
     {
       "name": "Brian Talbot",
@@ -59,6 +55,7 @@
     }
   ],
   "dependencies": {},
+  "deprecated": false,
   "description": "The iconic font, CSS, and SVG framework",
   "engines": {
     "node": ">=6"
