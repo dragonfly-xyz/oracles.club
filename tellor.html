@@ -154,11 +154,11 @@
               </div>
               <div class="card-body">
                 <div>
-                  <p>ChainLink’s reference price feeds rely on a set of trusted parties to provide asset prices to the Ethereum blockchain. ChainLink also offers a service that allows users to request alternate off-chain price data from trusted oracle providers or, alternatively, set up a network of oracles themselves. ChainLink provides free access to reference price feeds for the ETH/USD and BTC/USD pairs (as well as many others). These feeds rely on a set of 21 trusted parties to submit reference price data. The ETH/USD pair updates every 0.5% deviation in price and has a heartbeat of 2 hours. The BTC/USD pair updates every 1% deviation in price and also has a heartbeat of 2 hours.  Unlike MakerDAO, ChainLink does not have a decentralized governance process to determine participating parties in its reference price feeds. ChainLink itself is responsible for adding/removing parties from the system, centralizing control of the reference oracles.
-                  	<br/><br/>
-                  	ChainLink allows application developers to run their own ChainLink node or request other off-chain data, but requires payment in the LINK token. LINK is an ERC-667 token that implements a custom function that allows for the transfer of data along with token transfers. This mechanism is used to query and transfer resulting data from ChainLink nodes to on-chain smart contracts. If an application developer wishes to query non-reference data using Chainlink, they can either run their own ChainLink node, or query one of ChainLink’s trusted nodes. Each node that is queried charges the requester a predetermined amount of LINK. Requesters can call multiple nodes to achieve the desired degree of decentralization, but are charged for each query they make.
+                  <p>Tellor is a decentralized oracle that uses staked PoW miners that compete to push requested data to the Ethereum network. The median of the first five miners to successfully submit the data becomes the official value and the validity of the values can be disputed for a fee. The dispute goes to a vote and if the miner is determined to be malicious, their stake is given to the disputer, otherwise the dispute fee goes to the disputed miner.  
+                    <br/><br/>
+                    Data specifications are defined off-chain and include a range of values stemming from public API's including median prices from multiple exchanges, EOD values, and several TWAP values. 
+Focused on creating a fully decentralized oracle, each piece is crypto-economically secured and relies on token holders rather than any central parties or reputation. 
                     <br/><br/> 
-                    ChainLink gives developers the option to run their own ChainLink node that responds to requests, but requires these developers to buy and send the LINK token to themselves for each request they make. ChainLink will also be establishing a whitelist for all on-chain reference price data (although it is currently free). The ChainLink organization will control all changes (additions/deletions) to this list.
                   </p>  
                 </div>
               </div>
@@ -177,17 +177,14 @@
                   </thead>
                   <tbody>
                     <tr>
-                      <td>Reference price data is free to access</td>
-                      <td>Reference price feeds require on-chain transactions from every participant</td>
+                      <td>Decentralized and crypto-economomcally secured data feed</td>
+                      <td>Slower (data added every 10 minutes)</td>
                     </tr>
                     <tr>
-                      <td>Link nodes for custom data feeds quick to setup</td>
-                      <td>Users must trust ChainLink’s determined set of parties to provide the correct pricing data</td>
+                      <td>Liveness guarantee</td>
+                      <td>Limited data provided (specific numerical data)</td>
                     </tr>
-                    <tr>
-                      <td>Easy API for application developers</td>
-                      <td>Trusted node list and reference data feed whitelists are controlled by ChainLink</td>
-                    </tr>
+          
                   </table>
               </div>
             </div>
@@ -200,12 +197,12 @@
               <div class="card-body">
                 <h4>Contract Addresses</h4>
                 <ul>
-                    <li><a href="https://etherscan.io/address/0xF79D6aFBb6dA890132F9D7c355e3015f15F3406F">ETH/USD</a></li>
-                    <li><a href="https://etherscan.io/address/0x9b4e2579895efa2b4765063310dc4109a7641129">BAT/USD</a></li>
-                    <li><a href="https://etherscan.io/address/0xF5fff180082d6017036B771bA883025c654BC93">BTC/USD</a></li>
+                    <li><a href="https://etherscan.io/address/0x0ba45a8b5d5575935b8158a88c631e9f9c95a2e5">Mainnet</a></li>
+                    <li><a href="https://rinkeby.etherscan.io/address/0xfe41cb708cd98c5b20423433309e55b53f79134a">Rinkeby</a></li>
                   </ul>
-                <h4><a href="https://docs.chain.link/docs/decentralized-oracles-ethereum-mainnet">Developer Documentation</a></h4>
-                <h4><a href="https://feeds.chain.link/">Feed Data</a></h4>
+                <h4><a href="https://www.tellor.io">Tellor</a></h4>
+                <h4><a href="https://tellor.readthedocs.io/en/latest/">Tellor Documentation</a></h4>
+                <h4><a href="https://github.com/tellor-io">Tellor Github</a></h4>
               </div>
             </div>
 
@@ -213,7 +210,7 @@
               <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">Used By</h6>
               </div>
-              <div class="card-body">
+              <!-- <div class="card-body">
                 <div class="row">
                   <a href="https://aave.com/">
                       <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="height:5rem;" src="img/aave.png"/>
@@ -230,21 +227,7 @@
                     <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="height:5rem;" src="img/nexusmutual.png"/>
                   </a>
                 </div>
-                <!-- <div>
-                  <ul>Pros
-                    <li>Decentralized</li>
-                    <ul><li>Trusted feeds are determined through a decentralized governance process</li></ul>
-                    <li>Usability</li>
-                    <ul><li>API access for whitelisted addresses</li></ul>
-                  </ul>
-                  <ul>Cons
-                    <li>Slow</li>
-                    <ul><li>OSM (oracle security module) prevents price updates from being reflected immediately</li></ul>
-                    <li>Trusted</li>
-                    <ul><li> Users must trust a bounded set of parties to provide the correct pricing data</li></ul>
-                  </ul>
-                </div> -->
-              </div>
+              </div> -->
             </div>
           </div>
 
